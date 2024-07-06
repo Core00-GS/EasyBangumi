@@ -6,20 +6,20 @@ import com.heyanle.easybangumi4.cartoon_download.step.BaseStep
 import com.heyanle.easybangumi4.cartoon_download.step.CopyStep
 import com.heyanle.easybangumi4.cartoon_download.step.ParseStep
 import com.heyanle.easybangumi4.cartoon_download.step.TranscodeStep
-import com.heyanle.injekt.api.InjektModule
-import com.heyanle.injekt.api.InjektScope
-import com.heyanle.injekt.api.InjektionException
-import com.heyanle.injekt.api.addSingletonFactory
-import com.heyanle.injekt.api.get
+import com.heyanle.inject.api.InjectModule
+import com.heyanle.inject.api.InjectScope
+import com.heyanle.inject.api.InjectionException
+import com.heyanle.inject.api.addSingletonFactory
+import com.heyanle.inject.api.get
 
 /**
  * Created by heyanlin on 2023/10/2.
  */
 class CartoonDownloadModule(
     private val application: Application
-) : InjektModule {
+) : InjectModule {
 
-    override fun InjektScope.registerInjectables() {
+    override fun InjectScope.registerInjectables() {
         addSingletonFactory {
             LocalCartoonController(application)
         }
@@ -42,7 +42,7 @@ class CartoonDownloadModule(
                 AriaStep.NAME -> AriaStep(get(), get())
                 TranscodeStep.NAME -> TranscodeStep(application, get(), get())
                 CopyStep.NAME -> CopyStep(get(), get())
-                else -> throw InjektionException("No registered BaseStep with ${it}")
+                else -> throw InjectionException("No registered BaseStep with ${it}")
             }
         }
     }

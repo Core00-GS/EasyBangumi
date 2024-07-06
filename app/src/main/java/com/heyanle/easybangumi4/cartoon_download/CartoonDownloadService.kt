@@ -15,7 +15,7 @@ import com.heyanle.easybangumi4.R
 import com.heyanle.easybangumi4.utils.logi
 import com.heyanle.easybangumi4.utils.stringRes
 import com.heyanle.easybangumi4.cartoon_download.entity.DownloadItem
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collectLatest
@@ -54,7 +54,7 @@ class CartoonDownloadService : Service() {
     private var notificationChannel: NotificationChannel? = null
 
     private val scope = MainScope()
-    private val cartoonDownloadController: CartoonDownloadController by Injekt.injectLazy()
+    private val cartoonDownloadController: CartoonDownloadController by Inject.injectLazy()
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }

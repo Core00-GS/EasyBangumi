@@ -11,14 +11,9 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Backup
-import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Extension
-import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.HistoryToggleOff
-import androidx.compose.material.icons.filled.PlayCircle
-import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Storage
 import androidx.compose.material.icons.filled.Tag
@@ -45,12 +40,10 @@ import com.heyanle.easybangumi4.navigationCartoonTag
 import com.heyanle.easybangumi4.navigationSetting
 import com.heyanle.easybangumi4.setting.SettingMMKVPreferences
 import com.heyanle.easybangumi4.setting.SettingPreferences
-import com.heyanle.easybangumi4.source.utils.network.WebViewHelperV2Impl
 import com.heyanle.easybangumi4.ui.common.BooleanPreferenceItem
 import com.heyanle.easybangumi4.ui.common.OkImage
-import com.heyanle.easybangumi4.ui.main.Main
 import com.heyanle.easybangumi4.ui.setting.SettingPage
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 
 /**
  * Created by HeYanLe on 2023/3/22 15:29.
@@ -62,8 +55,8 @@ fun More() {
 
     val nav = LocalNavController.current
 
-    val settingPreferences: SettingPreferences by Injekt.injectLazy()
-    val settingMMKVPreferences: SettingMMKVPreferences by Injekt.injectLazy()
+    val settingPreferences: SettingPreferences by Inject.injectLazy()
+    val settingMMKVPreferences: SettingMMKVPreferences by Inject.injectLazy()
 
     Column(
         modifier = Modifier

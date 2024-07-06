@@ -47,7 +47,7 @@ import com.heyanle.easybangumi4.utils.isCurPadeMode
 import com.heyanle.easybangumi4.utils.logi
 import com.heyanle.easybangumi4.utils.openUrl
 import com.heyanle.easybangumi4.utils.stringRes
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.launch
 import loli.ball.easyplayer2.ControlViewModel
 import loli.ball.easyplayer2.ControlViewModelFactory
@@ -284,7 +284,7 @@ fun CartoonPlay(
     playingState: CartoonPlayingViewModel.PlayingState,
 ) {
     val nav = LocalNavController.current
-    val cartoonDownloadDispatcher: CartoonDownloadDispatcher by Injekt.injectLazy()
+    val cartoonDownloadDispatcher: CartoonDownloadDispatcher by Inject.injectLazy()
 
 
     DisposableEffect(key1 = Unit) {
@@ -304,7 +304,7 @@ fun CartoonPlay(
     }
 
     val gridCount = detailedVM.gridCount.collectAsState()
-    val settingPreferences: SettingPreferences by Injekt.injectLazy()
+    val settingPreferences: SettingPreferences by Inject.injectLazy()
     val orMode = settingPreferences.playerOrientationMode.flow()
         .collectAsState(initial = SettingPreferences.PlayerOrientationMode.Auto)
     LaunchedEffect(key1 = orMode) {

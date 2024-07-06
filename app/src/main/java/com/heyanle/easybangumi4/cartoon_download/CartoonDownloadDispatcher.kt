@@ -15,8 +15,8 @@ import com.heyanle.easybangumi4.source_api.entity.PlayLine
 import com.heyanle.easybangumi4.utils.CoroutineProvider
 import com.heyanle.easybangumi4.utils.getCachePath
 import com.heyanle.easybangumi4.utils.logi
-import com.heyanle.injekt.api.get
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.api.get
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.filter
@@ -234,7 +234,7 @@ class CartoonDownloadDispatcher(
         }
     }
 
-    private fun getStep(name: String) = Injekt.get<BaseStep>(name)
+    private fun getStep(name: String) = Inject.get<BaseStep>(name)
 
 
 }

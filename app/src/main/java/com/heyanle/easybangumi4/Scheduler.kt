@@ -18,15 +18,14 @@ import com.heyanle.easybangumi4.source.utils.NativeHelperImpl
 import com.heyanle.easybangumi4.storage.StorageModule
 import com.heyanle.easybangumi4.ui.common.dismiss
 import com.heyanle.easybangumi4.ui.common.moeDialog
-import com.heyanle.easybangumi4.utils.CoroutineProvider
 import com.heyanle.easybangumi4.utils.UUIDHelper
 import com.heyanle.easybangumi4.utils.exo_ssl.CropUtil
 import com.heyanle.easybangumi4.utils.exo_ssl.TrustAllHostnameVerifier
 import com.heyanle.easybangumi4.utils.stringRes
 import com.heyanle.extension_api.IconFactory
 import com.heyanle.extension_api.iconFactory
-import com.heyanle.injekt.api.get
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.api.get
+import com.heyanle.inject.core.Inject
 import com.heyanle.okkv2.MMKVStore
 import com.heyanle.okkv2.core.Okkv
 import com.heyanle.okkv2.core.okkv
@@ -47,7 +46,7 @@ object Scheduler {
      * application#init
      */
     fun runOnAppInit(application: Application) {
-        RootModule(application).registerWith(Injekt)
+        RootModule(application).registerWith(Inject)
     }
 
     /**
@@ -58,17 +57,17 @@ object Scheduler {
         initCrasher(application)
 
         // 注册各种 Controller
-        SettingModule(application).registerWith(Injekt)
-        ControllerModule(application).registerWith(Injekt)
-        CartoonModule(application).registerWith(Injekt)
-        MediaModule(application).registerWith(Injekt)
-        CaseModule(application).registerWith(Injekt)
-        ExtensionModule(application).registerWith(Injekt)
-        SourceModule(application).registerWith(Injekt)
-        CartoonDownloadModule(application).registerWith(Injekt)
-        StorageModule(application).registerWith(Injekt)
-        DlnaModule(application).registerWith(Injekt)
-        Injekt.get<NativeHelperImpl>()
+        SettingModule(application).registerWith(Inject)
+        ControllerModule(application).registerWith(Inject)
+        CartoonModule(application).registerWith(Inject)
+        MediaModule(application).registerWith(Inject)
+        CaseModule(application).registerWith(Inject)
+        ExtensionModule(application).registerWith(Inject)
+        SourceModule(application).registerWith(Inject)
+        CartoonDownloadModule(application).registerWith(Inject)
+        StorageModule(application).registerWith(Inject)
+        DlnaModule(application).registerWith(Inject)
+        Inject.get<NativeHelperImpl>()
         initOkkv(application)
         initBugly(application)
         initAria(application)
@@ -82,8 +81,8 @@ object Scheduler {
      */
     fun runOnMainActivityCreate(activity: MainActivity, isFirst: Boolean) {
         Migrate.update(activity)
-        val extensionController: ExtensionController by Injekt.injectLazy()
-        val extensionIconFactory: IconFactory by Injekt.injectLazy()
+        val extensionController: ExtensionController by Inject.injectLazy()
+        val extensionIconFactory: IconFactory by Inject.injectLazy()
         iconFactory = extensionIconFactory
         extensionController.init()
         if (isFirst) {

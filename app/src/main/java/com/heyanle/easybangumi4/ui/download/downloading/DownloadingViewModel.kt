@@ -8,7 +8,7 @@ import com.heyanle.easybangumi4.bus.DownloadingBus
 import com.heyanle.easybangumi4.cartoon_download.CartoonDownloadBus
 import com.heyanle.easybangumi4.cartoon_download.entity.DownloadItem
 import com.heyanle.easybangumi4.case.CartoonDownloadCase
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 
@@ -17,10 +17,10 @@ import kotlinx.coroutines.flow.stateIn
  */
 class DownloadingViewModel : ViewModel() {
 
-    private val cartoonDownloadBus: CartoonDownloadBus by Injekt.injectLazy()
+    private val cartoonDownloadBus: CartoonDownloadBus by Inject.injectLazy()
 
 
-    private val cartoonDownloadCase: CartoonDownloadCase by Injekt.injectLazy()
+    private val cartoonDownloadCase: CartoonDownloadCase by Inject.injectLazy()
     val downloadingFlow = cartoonDownloadCase.flowDownloadItem()
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 

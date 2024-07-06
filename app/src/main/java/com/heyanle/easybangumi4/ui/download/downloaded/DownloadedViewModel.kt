@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.heyanle.easybangumi4.cartoon_download.LocalCartoonController
 import com.heyanle.easybangumi4.cartoon_local.entity.LocalCartoon
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
  */
 class DownloadedViewModel : ViewModel() {
 
-    private val localCartoonController: LocalCartoonController by Injekt.injectLazy()
+    private val localCartoonController: LocalCartoonController by Inject.injectLazy()
     private val _localCartoonFlow = MutableStateFlow<List<LocalCartoon>>(emptyList())
     val localCartoonFlow = _localCartoonFlow.asStateFlow()
 

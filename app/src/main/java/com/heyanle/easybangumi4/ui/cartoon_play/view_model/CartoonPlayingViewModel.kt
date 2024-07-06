@@ -26,7 +26,7 @@ import com.heyanle.easybangumi4.utils.CoroutineProvider
 import com.heyanle.easybangumi4.utils.getCachePath
 import com.heyanle.easybangumi4.utils.logi
 import com.heyanle.easybangumi4.utils.stringRes
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -54,7 +54,7 @@ class CartoonPlayingViewModel(
     }
 
     // 播放器状态 =================================================
-    private val exoPlayerBuilder: ExoPlayer.Builder by Injekt.injectLazy()
+    private val exoPlayerBuilder: ExoPlayer.Builder by Inject.injectLazy()
     val exoPlayer = exoPlayerBuilder.build().apply {
         addListener(this@CartoonPlayingViewModel)
     }
@@ -96,10 +96,10 @@ class CartoonPlayingViewModel(
     private var thumbnailJob: Job? = null
 
     // 其他模块注入 =================================================
-    private val cartoonInfoDao: CartoonInfoDao by Injekt.injectLazy()
-    private val cartoonMediaSourceFactory: CartoonMediaSourceFactory by Injekt.injectLazy()
-    private val sourceStateCase: SourceStateCase by Injekt.injectLazy()
-    private val settingPreferences: SettingPreferences by Injekt.injectLazy()
+    private val cartoonInfoDao: CartoonInfoDao by Inject.injectLazy()
+    private val cartoonMediaSourceFactory: CartoonMediaSourceFactory by Inject.injectLazy()
+    private val sourceStateCase: SourceStateCase by Inject.injectLazy()
+    private val settingPreferences: SettingPreferences by Inject.injectLazy()
 
     // 各种配置（找机会拆单独一个 ViewModel 和播放无关 =================================================
     private val customSpeedPref = settingPreferences.customSpeed

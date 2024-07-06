@@ -3,8 +3,8 @@ package com.heyanle.easybangumi4
 import com.heyanle.easybangumi4.source.utils.network.WebViewHelperV2Impl
 import com.heyanle.easybangumi4.source_api.utils.api.WebViewHelperV2
 import com.heyanle.easybangumi4.utils.logi
-import com.heyanle.injekt.api.get
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.api.get
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ object TestMain {
 
 
     fun main(){
-        val helper = Injekt.get<WebViewHelperV2Impl>()
+        val helper = Inject.get<WebViewHelperV2Impl>()
         helper.openWebPage({false}, {})
 //helper.getGlobalWebView().loadUrl("https://www.nyafun.net/play/7187-1-1.html")
         MainScope().launch(Dispatchers.IO) {

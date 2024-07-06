@@ -23,7 +23,7 @@ import com.heyanle.easybangumi4.ui.common.moeSnackBar
 import com.heyanle.easybangumi4.utils.getCachePath
 import com.heyanle.easybangumi4.utils.getFilePath
 import com.heyanle.easybangumi4.utils.stringRes
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
@@ -228,7 +228,7 @@ class StorageController(
         folder.mkdirs()
 
         for (source in param.needBackupDataSource) {
-            val preferenceHelper by Injekt.injectLazy<PreferenceHelper>(source.key)
+            val preferenceHelper by Inject.injectLazy<PreferenceHelper>(source.key)
             val sourceData = preferenceHelper.map()
 
             if (sourceData.isEmpty()){
@@ -447,7 +447,7 @@ class StorageController(
         folder.listFiles()?.forEach {
             if (it.isFile && it.canRead() && it.name.endsWith(".json")){
                 val sourceKey = it.nameWithoutExtension
-                val preferenceHelper by Injekt.injectLazy<PreferenceHelper>(sourceKey)
+                val preferenceHelper by Inject.injectLazy<PreferenceHelper>(sourceKey)
                 val sourceData = JSONObject(it.readText())
                 sourceData.keys().forEach {
                     preferenceHelper.put(it, sourceData.optString(it))

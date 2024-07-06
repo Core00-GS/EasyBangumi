@@ -57,7 +57,7 @@ import com.heyanle.easybangumi4.ui.common.EasyDeleteDialog
 import com.heyanle.easybangumi4.ui.common.FastScrollToTopFab
 import com.heyanle.easybangumi4.ui.common.OkImage
 import com.heyanle.easybangumi4.ui.common.SelectionTopAppBar
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 
 /**
  * Created by heyanlin on 2023/11/2.
@@ -174,7 +174,7 @@ fun DownloadingTopBar(){
                         }
                     }else{
                         IconButton(onClick = {
-                            val cartoonDownloadController: CartoonDownloadController by Injekt.injectLazy()
+                            val cartoonDownloadController: CartoonDownloadController by Inject.injectLazy()
                             cartoonDownloadController.showDownloadHelpDialog()
                         }){
                             Icon(

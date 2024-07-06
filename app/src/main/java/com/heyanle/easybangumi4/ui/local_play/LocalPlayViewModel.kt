@@ -24,7 +24,7 @@ import com.heyanle.easybangumi4.ui.common.proc.SortState
 import com.heyanle.easybangumi4.utils.logi
 import com.heyanle.easybangumi4.utils.stringRes
 import com.heyanle.easybangumi4.utils.toast
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -67,11 +67,11 @@ class LocalPlayViewModel(
     val sortList = listOf(sortByDefault, sortByLabel)
 
 
-    private val exoPlayerBuilder: ExoPlayer.Builder by Injekt.injectLazy()
+    private val exoPlayerBuilder: ExoPlayer.Builder by Inject.injectLazy()
     val exoPlayer = exoPlayerBuilder.build()
-    private val localCartoonCase: LocalCartoonCase by Injekt.injectLazy()
+    private val localCartoonCase: LocalCartoonCase by Inject.injectLazy()
 
-    private val settingPreferences: SettingPreferences by Injekt.injectLazy()
+    private val settingPreferences: SettingPreferences by Inject.injectLazy()
 
     private val customSpeedPref = settingPreferences.customSpeed
     val customSpeed = customSpeedPref.stateIn(viewModelScope)

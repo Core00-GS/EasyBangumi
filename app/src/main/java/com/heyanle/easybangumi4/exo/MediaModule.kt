@@ -15,12 +15,12 @@ import androidx.media3.exoplayer.ExoPlayer
 import com.heyanle.easybangumi4.setting.SettingPreferences
 import com.heyanle.easybangumi4.utils.getCachePath
 import com.heyanle.easybangumi4.utils.getFilePath
-import com.heyanle.injekt.api.InjektModule
-import com.heyanle.injekt.api.InjektScope
-import com.heyanle.injekt.api.addPerKeyFactory
-import com.heyanle.injekt.api.addSingletonFactory
-import com.heyanle.injekt.api.get
-import com.heyanle.injekt.api.getOrNull
+import com.heyanle.inject.api.InjectModule
+import com.heyanle.inject.api.InjectScope
+import com.heyanle.inject.api.addPerKeyFactory
+import com.heyanle.inject.api.addSingletonFactory
+import com.heyanle.inject.api.get
+import com.heyanle.inject.api.getOrNull
 import java.io.File
 
 /**
@@ -30,8 +30,8 @@ import java.io.File
 @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
 class MediaModule(
     private val application: Application
-) : InjektModule {
-    override fun InjektScope.registerInjectables() {
+) : InjectModule {
+    override fun InjectScope.registerInjectables() {
         addSingletonFactory<DatabaseProvider> {
             StandaloneDatabaseProvider(application)
         }

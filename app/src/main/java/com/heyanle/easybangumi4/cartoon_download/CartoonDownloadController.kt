@@ -14,7 +14,7 @@ import com.heyanle.easybangumi4.ui.common.dismiss
 import com.heyanle.easybangumi4.ui.common.show
 import com.heyanle.easybangumi4.ui.setting.SettingPage
 import com.heyanle.easybangumi4.utils.MediaAndroidUtils
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import com.heyanle.okkv2.core.okkv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -54,7 +54,7 @@ class CartoonDownloadController(
                             if (name == null) {
                                 return@flatMap emptyList<DownloadItem>()
                             } else {
-                                val step by Injekt.injectLazy<BaseStep>(name)
+                                val step by Inject.injectLazy<BaseStep>(name)
                                 val n = step.init(it)
                                 if (n == null) {
                                     return@flatMap emptyList<DownloadItem>()

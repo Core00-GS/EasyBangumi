@@ -22,7 +22,7 @@ import com.heyanle.easybangumi4.ui.download.downloaded.Downloaded
 import com.heyanle.easybangumi4.ui.download.downloaded.DownloadedTopBar
 import com.heyanle.easybangumi4.ui.download.downloading.Downloading
 import com.heyanle.easybangumi4.ui.download.downloading.DownloadingTopBar
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.launch
 
 /**
@@ -59,7 +59,7 @@ fun Download() {
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(0) { DownloadPageItems.size }
     LaunchedEffect(Unit) {
-        val cartoonDownloadController: CartoonDownloadController by Injekt.injectLazy()
+        val cartoonDownloadController: CartoonDownloadController by Inject.injectLazy()
         cartoonDownloadController.tryShowFirstDownloadDialog()
     }
     Surface(

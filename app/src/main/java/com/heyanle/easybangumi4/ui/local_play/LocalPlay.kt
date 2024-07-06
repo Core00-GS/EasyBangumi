@@ -118,7 +118,7 @@ import com.heyanle.easybangumi4.ui.common.proc.SortDropDownMenu
 import com.heyanle.easybangumi4.ui.common.proc.SortState
 import com.heyanle.easybangumi4.utils.isCurPadeMode
 import com.heyanle.easybangumi4.utils.stringRes
-import com.heyanle.injekt.core.Injekt
+import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import loli.ball.easyplayer2.BackBtn
@@ -142,7 +142,7 @@ fun LocalPlay(
     val vm = viewModel<LocalPlayViewModel>(factory = LocalPlayViewModelFactory(uuid = uuid))
     val controlVM = ControlViewModelFactory.viewModel(vm.exoPlayer, isPad, LocalPlayViewModel.TAG)
     val nav = LocalNavController.current
-    val settingPreferences: SettingPreferences by Injekt.injectLazy()
+    val settingPreferences: SettingPreferences by Inject.injectLazy()
     val currentScaleType = settingPreferences.videoScaleType.flow().collectAsState(initial = settingPreferences.videoScaleType.get())
 
     val state by vm.flow.collectAsState()
