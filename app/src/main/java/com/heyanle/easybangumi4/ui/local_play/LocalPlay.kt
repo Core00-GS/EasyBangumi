@@ -97,8 +97,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.heyanle.easy_i18n.R
 import com.heyanle.easybangumi4.LocalNavController
 import com.heyanle.easybangumi4.cartoon.entity.PlayLineWrapper
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalCartoon
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalEpisode
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalCartoon
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalEpisode
 import com.heyanle.easybangumi4.navigationDetailed
 import com.heyanle.easybangumi4.navigationSearch
 import com.heyanle.easybangumi4.setting.SettingPreferences

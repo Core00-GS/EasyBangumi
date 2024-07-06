@@ -6,6 +6,7 @@ import com.heyanle.easybangumi4.cartoon_download.step.BaseStep
 import com.heyanle.easybangumi4.cartoon_download.step.CopyStep
 import com.heyanle.easybangumi4.cartoon_download.step.ParseStep
 import com.heyanle.easybangumi4.cartoon_download.step.TranscodeStep
+import com.heyanle.easybangumi4.cartoon_local.CartoonLocalController
 import com.heyanle.inject.api.InjectModule
 import com.heyanle.inject.api.InjectScope
 import com.heyanle.inject.api.InjectionException
@@ -44,6 +45,10 @@ class CartoonDownloadModule(
                 CopyStep.NAME -> CopyStep(get(), get())
                 else -> throw InjectionException("No registered BaseStep with ${it}")
             }
+        }
+
+        addSingletonFactory {
+            CartoonLocalController(get())
         }
     }
 }

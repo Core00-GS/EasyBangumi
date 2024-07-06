@@ -63,7 +63,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.heyanle.easybangumi4.LocalNavController
 import com.heyanle.easybangumi4.R
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalCartoon
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalCartoon
 import com.heyanle.easybangumi4.navigationLocalPlay
 import com.heyanle.easybangumi4.ui.common.EasyDeleteDialog
 import com.heyanle.easybangumi4.ui.common.FastScrollToTopFab

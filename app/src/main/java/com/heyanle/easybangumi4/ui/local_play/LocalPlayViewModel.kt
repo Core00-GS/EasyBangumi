@@ -15,8 +15,8 @@ import com.heyanle.easy_i18n.R
 import com.heyanle.easybangumi4.APP
 import com.heyanle.easybangumi4.BuildConfig
 import com.heyanle.easybangumi4.cartoon.entity.PlayLineWrapper
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalCartoon
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalEpisode
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalCartoon
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalEpisode
 import com.heyanle.easybangumi4.case.LocalCartoonCase
 import com.heyanle.easybangumi4.setting.SettingPreferences
 import com.heyanle.easybangumi4.ui.common.proc.SortBy

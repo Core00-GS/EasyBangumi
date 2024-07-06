@@ -70,8 +70,6 @@ fun ColumnScope.AppearanceSetting(
     nestedScrollConnection: NestedScrollConnection? = null
 ) {
 
-    val nav = LocalNavController.current
-
     val scope = rememberCoroutineScope()
 
     val settingPreferences: SettingPreferences by Inject.injectLazy()

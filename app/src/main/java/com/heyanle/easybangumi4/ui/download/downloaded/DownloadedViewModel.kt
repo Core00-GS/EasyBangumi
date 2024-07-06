@@ -6,7 +6,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.heyanle.easybangumi4.cartoon_download.LocalCartoonController
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalCartoon
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalCartoon
 import com.heyanle.inject.core.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

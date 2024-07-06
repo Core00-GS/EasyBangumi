@@ -249,5 +249,7 @@ dependencies {
 
     implementation(project(":EasyMediaTransformer:easy_transformer"))
 
+    implementation(libs.uni.file)
+
 
 }

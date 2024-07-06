@@ -1,7 +1,8 @@
 package com.heyanle.easybangumi4.ui.local_play
 
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalEpisode
-import com.heyanle.easybangumi4.cartoon_local.entity.LocalPlayLine
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalEpisode
+import com.heyanle.easybangumi4.cartoon_download.entity.LocalPlayLine
+
 
 data class LocalPlayLineWrapper (
     val playLine: LocalPlayLine,

@@ -3,6 +3,7 @@ package com.heyanle.easybangumi4.splash.step
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
@@ -20,7 +21,8 @@ import com.heyanle.easybangumi4.ui.common.OkImage
  */
 interface BaseStep {
 
-    fun need(first: Boolean): Boolean
+    val name: String
+    val version: Int
 
     @Composable
     fun Compose()
@@ -32,6 +34,7 @@ fun ColumnScope.SampleGuildHeader() {
     Spacer(modifier = Modifier.height(32.dp))
     OkImage(
         modifier = Modifier
+            .padding(16.dp, 8.dp)
             .size(64.dp)
             .align(Alignment.Start),
         image = R.mipmap.logo_new,
@@ -42,7 +45,8 @@ fun ColumnScope.SampleGuildHeader() {
         headlineContent = {
             Text(
                 text = stringResource(id = com.heyanle.easy_i18n.R.string.welcome),
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleLarge
             )
         },
         supportingContent = {

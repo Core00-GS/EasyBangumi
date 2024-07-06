@@ -317,6 +317,7 @@
 
     <string name="video">视频</string>
     <string name="detailed">详情</string>
+    <string name="app_detailed">应用详情</string>
 
     <string name="all_word">全部</string>
 
@@ -507,17 +508,23 @@
     <string name="welcome">欢迎！</string>
     <string name="setting_first">请先进行一些设置，或者稍后再到设置中调整</string>
 
-    <string name="choose_folder_title">请选择一个纯纯看番文件夹</string>
-    <string name="choose_folder_msg">该文件夹将被用于存放备份文件，下载到本地的番剧文件</string>
-    <string name="current_choose_folder">当前选择文件夹：%1$ms</string>
+    <string name="choose_folder_to_bangumi">选择一个文件夹供纯纯看番存放下载番剧、备份文件等</string>
+    <string name="choose_folder_to_bangumi_msg">推荐使用一个专门的文件夹</string>
+
+    <string name="current_choose_folder">已选文件夹：%1$s</string>
+    <string name="folder_use_private_msg">卸载纯纯看番后将会删除，同时其他 APP 无法访问。</string>
+
 
     <string name="private_folder">私有目录</string>
-    <string name="choose_folder">选择自定义目录</string>
+    <string name="choose_folder">选择目录</string>
 
-    <string name="folder_use_private">使用纯纯看番私有目录</string>
-    <string name="folder_use_private_msg">卸载纯纯看番后将会删除，同时其他 APP 无法访问。</string>
 
     <string name="choose_folder_failed">文件夹选择失败，选择私有目录</string>
 
+    <string name="get_app_list_permission">获取应用列表权限</string>
+    <string name="get_app_list_permission_msg">用于加载番源。</string>
+    <string name="get_app_list_permission_toast">请手动授予获取应用列表权限</string>
+
+    <string name="next">下一步</string>
 
 </resources>

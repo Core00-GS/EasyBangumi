@@ -15,6 +15,7 @@ import com.heyanle.easybangumi4.dlna.DlnaModule
 import com.heyanle.easybangumi4.setting.SettingModule
 import com.heyanle.easybangumi4.source.SourceModule
 import com.heyanle.easybangumi4.source.utils.NativeHelperImpl
+import com.heyanle.easybangumi4.splash.SplashActivity
 import com.heyanle.easybangumi4.storage.StorageModule
 import com.heyanle.easybangumi4.ui.common.dismiss
 import com.heyanle.easybangumi4.ui.common.moeDialog
@@ -76,11 +77,14 @@ object Scheduler {
 
     var first by okkv("first_visible_version_code", def = 0)
 
+    fun runOnSplashActivityCreate(activity: SplashActivity, isFirst: Boolean) {
+        Migrate.update(activity)
+    }
+
     /**
      * MainActivity#onCreate
      */
     fun runOnMainActivityCreate(activity: MainActivity, isFirst: Boolean) {
-        Migrate.update(activity)
         val extensionController: ExtensionController by Inject.injectLazy()
         val extensionIconFactory: IconFactory by Inject.injectLazy()
         iconFactory = extensionIconFactory

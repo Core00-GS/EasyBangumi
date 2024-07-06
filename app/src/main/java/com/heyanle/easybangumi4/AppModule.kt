@@ -3,6 +3,7 @@ package com.heyanle.easybangumi4
 import android.app.Application
 import com.google.gson.Gson
 import com.heyanle.easybangumi4.bus.DownloadingBus
+import com.heyanle.easybangumi4.splash.SplashGuildController
 import com.heyanle.easybangumi4.theme.EasyThemeController
 import com.heyanle.easybangumi4.utils.MoshiArrayListJsonAdapter
 import com.heyanle.inject.api.InjectModule
@@ -48,6 +49,9 @@ class ControllerModule(
         }
         addSingletonFactory {
             DownloadingBus()
+        }
+        addSingletonFactory {
+            SplashGuildController(get(), get())
         }
     }
 }

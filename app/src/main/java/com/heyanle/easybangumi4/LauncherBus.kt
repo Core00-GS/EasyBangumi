@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.heyanle.easybangumi4.splash.SplashActivity
 import com.heyanle.easybangumi4.utils.CoroutineProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -32,6 +33,8 @@ class LauncherBus(
             _current = WeakReference(launcherBus)
         }
     }
+
+    private val actWeakRef = WeakReference(act)
 
     private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
     private val scope = CoroutineScope(SupervisorJob() + dispatcher)
