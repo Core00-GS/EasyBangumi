@@ -1,4 +1,4 @@
-package com.heyanle.injekt.api
+package com.heyanle.inject.api
 
 import java.lang.reflect.GenericArrayType
 import java.lang.reflect.ParameterizedType

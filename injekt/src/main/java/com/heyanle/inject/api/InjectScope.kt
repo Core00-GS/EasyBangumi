@@ -1,10 +1,10 @@
-package com.heyanle.injekt.api
+package com.heyanle.inject.api
 
 /**
  * Created by HeYanLe on 2023/7/29 19:35.
  * https://github.com/heyanLE
  */
-abstract class InjektScope: InjektRegistry, InjektFactory {
+abstract class InjectScope: InjectRegistry, InjectFactory {
     inline fun <reified T : Any> injectLazy(): Lazy<T> {
         return lazy { get(fullType<T>()) }
     }
@@ -21,23 +21,23 @@ abstract class InjektScope: InjektRegistry, InjektFactory {
         return lazyOf(get(fullType<T>(), key))
     }
 
-    inline fun <reified R : Any> addScopedSingletonFactory(noinline scopedFactoryCalledOnce: InjektScope.() -> R) {
+    inline fun <reified R : Any> addScopedSingletonFactory(noinline scopedFactoryCalledOnce: InjectScope.() -> R) {
         addSingletonFactory(fullType<R>()) { this.scopedFactoryCalledOnce() }
     }
 
-    inline fun <reified R : Any> addScopedFactory(noinline scopedFactoryCalledEveryTime: InjektScope.() -> R) {
+    inline fun <reified R : Any> addScopedFactory(noinline scopedFactoryCalledEveryTime: InjectScope.() -> R) {
         addFactory(fullType<R>()) { this.scopedFactoryCalledEveryTime() }
     }
 
-    inline fun <reified R : Any, K : Any> addScopedPerKeyFactory(noinline scopedFactoryCalledPerKey: InjektScope.(key: K) -> R) {
+    inline fun <reified R : Any, K : Any> addScopedPerKeyFactory(noinline scopedFactoryCalledPerKey: InjectScope.(key: K) -> R) {
         addPerKeyFactory(fullType<R>()) { key: K -> this.scopedFactoryCalledPerKey(key) }
     }
 
-    inline fun <reified R : Any, K : Any> addScopedPerThreadPerKeyFactory(noinline scopedFactoryCalledPerKeyPerThread: InjektScope.(key: K) -> R) {
+    inline fun <reified R : Any, K : Any> addScopedPerThreadPerKeyFactory(noinline scopedFactoryCalledPerKeyPerThread: InjectScope.(key: K) -> R) {
         addPerThreadPerKeyFactory(fullType<R>()) { key: K -> this.scopedFactoryCalledPerKeyPerThread(key) }
     }
 
-    inline fun <reified R : Any> addScopedPerThreadFactory(noinline scopedFactoryCalledPerThread: InjektScope.() -> R) {
+    inline fun <reified R : Any> addScopedPerThreadFactory(noinline scopedFactoryCalledPerThread: InjectScope.() -> R) {
         addPerThreadFactory(fullType<R>()) { this.scopedFactoryCalledPerThread() }
     }
 

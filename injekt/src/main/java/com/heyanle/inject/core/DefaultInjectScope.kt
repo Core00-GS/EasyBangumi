@@ -1,10 +1,10 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.heyanle.injekt.core
+package com.heyanle.inject.core
 
-import com.heyanle.injekt.api.InjektScope
-import com.heyanle.injekt.api.InjektionException
-import com.heyanle.injekt.api.TypeReference
+import com.heyanle.inject.api.InjectScope
+import com.heyanle.inject.api.InjectionException
+import com.heyanle.inject.api.TypeReference
 import java.lang.reflect.Type
 import java.util.concurrent.ConcurrentHashMap
 
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap
  * Created by HeYanLe on 2023/7/29 19:38.
  * https://github.com/heyanLE
  */
-class DefaultInjektScope : InjektScope() {
+class DefaultInjectScope : InjectScope() {
 
     object NoKey {}
 
@@ -37,13 +37,13 @@ class DefaultInjektScope : InjektScope() {
     // factory
     override fun <R : Any> getInstance(forType: Type): R {
         val factory = factories.getByKey(forType)
-            ?: throw InjektionException("No registered instance or factory for type ${forType}")
+            ?: throw InjectionException("No registered instance or factory for type ${forType}")
         return factory.invoke() as R
     }
 
     override fun <R : Any, K : Any> getKeyedInstance(forType: Type, key: K): R {
         val factory = keyedFactories.getByKey(forType)
-            ?: throw InjektionException("No registered keyed factory for type ${forType}")
+            ?: throw InjectionException("No registered keyed factory for type ${forType}")
         return factory.invoke(key) as R
     }
 

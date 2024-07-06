@@ -1,12 +1,10 @@
-package com.heyanle.injekt.api
-
-import kotlin.reflect.KClass
+package com.heyanle.inject.api
 
 /**
  * Created by HeYanLe on 2023/7/29 19:33.
  * https://github.com/heyanLE
  */
-interface InjektRegistry {
+interface InjectRegistry {
     fun <T : Any> addSingleton(forType: TypeReference<T>, singleInstance: T) {
         addSingletonFactory (forType){ singleInstance }
     }
@@ -20,32 +18,32 @@ interface InjektRegistry {
     fun <O: Any, T: O> addAlias(existingRegisteredType: TypeReference<T>, otherAncestorOrInterface: TypeReference<O>)
 }
 
-inline fun <reified T: Any> InjektRegistry.hasFactory(): Boolean {
+inline fun <reified T: Any> InjectRegistry.hasFactory(): Boolean {
     return hasFactory(fullType<T>())
 }
 
-inline fun <reified T : Any> InjektRegistry.addSingleton(singleInstance: T) {
+inline fun <reified T : Any> InjectRegistry.addSingleton(singleInstance: T) {
     addSingleton(fullType<T>(), singleInstance)
 }
 
-inline fun <reified R: Any> InjektRegistry.addSingletonFactory(noinline factoryCalledOnce: () -> R) {
+inline fun <reified R: Any> InjectRegistry.addSingletonFactory(noinline factoryCalledOnce: () -> R) {
     addSingletonFactory(fullType<R>(), factoryCalledOnce)
 }
 
-inline fun <reified R: Any> InjektRegistry.addFactory(noinline factoryCalledEveryTime: () -> R) {
+inline fun <reified R: Any> InjectRegistry.addFactory(noinline factoryCalledEveryTime: () -> R) {
     addFactory(fullType<R>(), factoryCalledEveryTime)
 }
 
-inline fun <reified R: Any> InjektRegistry.addPerThreadFactory(noinline factoryCalledOncePerThread: () -> R) {
+inline fun <reified R: Any> InjectRegistry.addPerThreadFactory(noinline factoryCalledOncePerThread: () -> R) {
     addPerThreadFactory(fullType<R>(), factoryCalledOncePerThread)
 }
 
-inline fun <reified R: Any, K: Any> InjektRegistry.addPerKeyFactory(noinline factoryCalledPerKey: (K) -> R) {
+inline fun <reified R: Any, K: Any> InjectRegistry.addPerKeyFactory(noinline factoryCalledPerKey: (K) -> R) {
     addPerKeyFactory(fullType<R>(), factoryCalledPerKey)
 }
 
-inline fun <reified R: Any, K: Any> InjektRegistry.addPerThreadPerKeyFactory(noinline factoryCalledPerKeyPerThread: (K) -> R) {
+inline fun <reified R: Any, K: Any> InjectRegistry.addPerThreadPerKeyFactory(noinline factoryCalledPerKeyPerThread: (K) -> R) {
     addPerThreadPerKeyFactory(fullType<R>(), factoryCalledPerKeyPerThread)
 }
 
-inline fun <reified EXISTINGREGISTERED: ANCESTORTYPE, reified ANCESTORTYPE: Any> InjektRegistry.addAlias() = addAlias(fullType<EXISTINGREGISTERED>(), fullType<ANCESTORTYPE>())
+inline fun <reified EXISTINGREGISTERED: ANCESTORTYPE, reified ANCESTORTYPE: Any> InjectRegistry.addAlias() = addAlias(fullType<EXISTINGREGISTERED>(), fullType<ANCESTORTYPE>())
