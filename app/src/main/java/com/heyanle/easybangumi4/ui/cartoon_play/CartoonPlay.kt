@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.media3.common.util.UnstableApi
 import com.heyanle.easy_i18n.R
-import com.heyanle.easybangumi4.DOWNLOAD
 import com.heyanle.easybangumi4.LocalNavController
 import com.heyanle.easybangumi4.cartoon_download.CartoonDownloadDispatcher
 import com.heyanle.easybangumi4.navigationCartoonTag
