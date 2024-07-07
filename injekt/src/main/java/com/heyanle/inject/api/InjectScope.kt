@@ -9,16 +9,20 @@ abstract class InjectScope: InjectRegistry, InjectFactory {
         return lazy { get(fullType<T>()) }
     }
 
-    inline fun <reified T : Any> injectValue(): Lazy<T> {
-        return lazyOf(get(fullType<T>()))
+    inline fun <reified T : Any> injectValue(): T {
+        return get(fullType<T>())
+    }
+
+    inline fun <reified T : Any> injectCurrentOrNull(): T? {
+        return getCurrentInstanceOrNull(fullType<T>().type)
     }
 
     inline fun <reified T : Any> injectLazy(key: Any): Lazy<T> {
         return lazy { get(fullType<T>(), key) }
     }
 
-    inline fun <reified T : Any> injectValue(key: Any): Lazy<T> {
-        return lazyOf(get(fullType<T>(), key))
+    inline fun <reified T : Any> injectValue(key: Any): T {
+        return get(fullType<T>(), key)
     }
 
     inline fun <reified R : Any> addScopedSingletonFactory(noinline scopedFactoryCalledOnce: InjectScope.() -> R) {

@@ -211,13 +211,6 @@ dependencies {
     implementation(libs.commons.text)
     implementation(libs.compose.reorderable)
 
-    ksp(libs.aria.compiler)
-    //annotationProcessor(libs.aria.compiler)
-    implementation(libs.aria)
-    implementation(libs.aria.m3u8)
-
-    implementation(libs.jeff.m3u8)
-
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 

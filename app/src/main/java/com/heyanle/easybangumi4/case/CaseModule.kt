@@ -18,9 +18,6 @@ class CaseModule(
             CartoonInfoCase(get())
         }
         addSingletonFactory {
-            CartoonDownloadCase(get(), get())
-        }
-        addSingletonFactory {
             ExtensionCase(get())
         }
         addSingletonFactory {

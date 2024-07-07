@@ -435,18 +435,18 @@ fun CartoonPlay(
                         stringRes(R.string.add_download_completely).moeSnackBar(
                             confirmLabel = stringRes(R.string.click_to_view),
                             onConfirm = {
-                                runCatching {
-                                    nav.navigate(DOWNLOAD)
-                                }.onFailure {
-                                    it.printStackTrace()
-                                }
+//                                runCatching {
+//                                    nav.navigate(DOWNLOAD)
+//                                }.onFailure {
+//                                    it.printStackTrace()
+//                                }
                             }
                         )
-                        cartoonDownloadDispatcher.newDownload(
-                            detailState.cartoonInfo,
-                            episodes.map {
-                                playLine.playLine to it
-                            })
+//                        cartoonDownloadDispatcher.newDownload(
+//                            detailState.cartoonInfo,
+//                            episodes.map {
+//                                playLine.playLine to it
+//                            })
                     },
                     onSortChange = { sortKey, isReverse ->
                         detailedVM.setCartoonSort(sortKey, isReverse, detailState.cartoonInfo)

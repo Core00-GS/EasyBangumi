@@ -28,7 +28,6 @@ import com.heyanle.easybangumi4.ui.about.About
 import com.heyanle.easybangumi4.ui.cartoon_play.CartoonPlay
 import com.heyanle.easybangumi4.ui.cartoon_play.view_model.CartoonPlayViewModel
 import com.heyanle.easybangumi4.ui.dlna.Dlna
-import com.heyanle.easybangumi4.ui.download.Download
 import com.heyanle.easybangumi4.ui.local_play.LocalPlay
 import com.heyanle.easybangumi4.ui.main.Main
 import com.heyanle.easybangumi4.ui.main.history.History
@@ -82,8 +81,6 @@ const val SOURCE_CONFIG = "source_config"
 const val DLNA = "dlna"
 
 const val SETTING = "setting"
-
-const val DOWNLOAD = "download"
 
 const val TAG_MANAGE = "tag_manage"
 
@@ -419,10 +416,6 @@ fun Nav() {
                 CartoonTag()
             }
 
-            composable(DOWNLOAD) {
-                NormalSystemBarColor()
-                Download()
-            }
 
             composable(STORAGE) {
                 NormalSystemBarColor()

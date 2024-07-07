@@ -41,6 +41,20 @@ class DefaultInjectScope : InjectScope() {
         return factory.invoke() as R
     }
 
+    override fun <R : Any> getCurrentInstanceOrNull(forType: Type): R? {
+        val oriFactory = factories.getByKey(forType) ?: return null
+        val singletonInstance = existingValues[Instance(forType, NoKey)]
+        val threadInstance = threadedValues.get()[Instance(forType, NoKey)]
+        if (singletonInstance == null && threadInstance == null){
+            return null
+        }
+        return try {
+            oriFactory as R
+        } catch (e: ClassCastException) {
+            null
+        }
+    }
+
     override fun <R : Any, K : Any> getKeyedInstance(forType: Type, key: K): R {
         val factory = keyedFactories.getByKey(forType)
             ?: throw InjectionException("No registered keyed factory for type ${forType}")

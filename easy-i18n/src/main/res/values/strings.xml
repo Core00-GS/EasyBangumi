@@ -527,4 +527,9 @@
 
     <string name="next">下一步</string>
 
+    <string name="local_source">本地番源</string>
+    <string name="local_source_desc">管理下载到本地的番剧</string>
+
+    <string name="local_folder_error">本地目录打开失败，请重新设定目录路径或改为使用私有目录</string>
+
 </resources>

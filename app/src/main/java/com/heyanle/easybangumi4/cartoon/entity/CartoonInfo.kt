@@ -1,6 +1,8 @@
 package com.heyanle.easybangumi4.cartoon.entity
 
 import androidx.room.Entity
+import androidx.room.Ignore
+import com.heyanle.easybangumi4.cartoon_local.entity.CartoonLocalItem
 import com.heyanle.easybangumi4.source_api.component.detailed.DetailedComponent
 import com.heyanle.easybangumi4.source_api.entity.Cartoon
 import com.heyanle.easybangumi4.source_api.entity.CartoonCover
@@ -115,6 +117,12 @@ data class CartoonInfo(
     }
 
 
+    // ext 拓展字段，这里所有字段都需要加上 Ignore
+
+    // only for local source
+    @Ignore
+    var cartoonLocalItem: CartoonLocalItem? = null
+
     val genres: List<String> by lazy {
         if (genre.isEmpty()) {
             emptyList<String>()
@@ -206,10 +214,6 @@ data class CartoonInfo(
             }
         }
         return matched
-    }
-
-    fun getSummary(): CartoonSummary {
-        return CartoonSummary(id, source)
     }
 
     fun toIdentify(): String {

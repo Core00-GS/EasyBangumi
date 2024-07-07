@@ -29,6 +29,7 @@ import com.heyanle.easy_i18n.R
 import com.heyanle.easybangumi4.APP
 import com.heyanle.easybangumi4.LauncherBus
 import com.heyanle.easybangumi4.cartoon_local.CartoonLocalController
+import com.heyanle.easybangumi4.cartoon_local.LocalCartoonPreference
 import com.heyanle.easybangumi4.splash.SplashGuildController
 import com.heyanle.easybangumi4.ui.common.moeSnackBar
 import com.heyanle.easybangumi4.ui.setting.DarkModeItem
@@ -46,7 +47,7 @@ import com.hippo.unifile.UniFile
 class LocalStep: BaseStep {
 
     private val splashGuildController: SplashGuildController by Inject.injectLazy()
-    private val localController: CartoonLocalController  by Inject.injectLazy()
+    private val localController: LocalCartoonPreference  by Inject.injectLazy()
 
     override val name: String
         get() = "Local"
