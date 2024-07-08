@@ -38,7 +38,7 @@ object CopyAndNfoStep: BaseStep {
         }
         val targetFolder = UniFile.fromUri(APP, localPref.realLocalUri.value) ?: throw IllegalStateException("target folder is null")
         val targetCartoonFolder = targetFolder.createDirectory(runtime.req.toLocalCartoonId) ?: throw IllegalStateException("target cartoon folder is null")
-        val mediaNameP = "${runtime.req.toLocalCartoonId} ${runtime.req.toEpisodeTitle} ${runtime.req.uuid} S1E${runtime.req.toEpisode}"
+        val mediaNameP = "${runtime.req.toLocalCartoonId} ${runtime.req.toEpisodeTitle} S1E${runtime.req.toEpisode}"
         val mediaName = "${mediaNameP}.mp4"
         val targetMediaFile = targetCartoonFolder.createFile("$mediaName.temp") ?: throw IllegalStateException("target media file is null")
         if (!targetMediaFile.canWrite()) {

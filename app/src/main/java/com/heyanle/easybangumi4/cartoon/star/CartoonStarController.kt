@@ -6,10 +6,8 @@ import com.heyanle.easybangumi4.cartoon.entity.CartoonInfo
 import com.heyanle.easybangumi4.cartoon.entity.CartoonTag
 import com.heyanle.easybangumi4.cartoon.entity.CartoonTagWrapper
 import com.heyanle.easybangumi4.cartoon.repository.db.dao.CartoonInfoDao
-import com.heyanle.easybangumi4.cartoon.repository.db.dao.CartoonTagDao
 import com.heyanle.easybangumi4.cartoon.tag.CartoonTagsController
 import com.heyanle.easybangumi4.ui.common.proc.FilterState
-import com.heyanle.easybangumi4.ui.common.proc.SortState
 import com.heyanle.easybangumi4.utils.jsonTo
 import com.heyanle.easybangumi4.utils.stringRes
 import com.heyanle.easybangumi4.utils.toJson

@@ -2,9 +2,12 @@ package com.heyanle.easybangumi4.cartoon_local.entity
 
 import androidx.annotation.WorkerThread
 import com.heyanle.easybangumi4.cartoon.entity.CartoonInfo
+import com.heyanle.easybangumi4.cartoon.repository.db.dao.CartoonTagDao
 import com.heyanle.easybangumi4.cartoon_local.source.LocalSource
 import com.heyanle.easybangumi4.source_api.entity.Cartoon
 import com.heyanle.easybangumi4.utils.jsonTo
+import com.heyanle.inject.api.get
+import com.heyanle.inject.core.Inject
 import com.hippo.unifile.UniFile
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
@@ -20,18 +23,15 @@ data class CartoonLocalItem (
     // tvshow.nfo file uri
     val nfoUri: String,
     // ext.json file uri
-    val extUri: String,
+    val extUri: String?,
+
+    val uuid: String,
 
     // form tvshow.nfo
     val title: String,
     val desc: String,
     val cover: String,
     val genre: List<String>,
-
-    // 番剧刮削信息从 nfo 获取
-    // 其他信息都从 ext.json 获取，这里 ext.json 为了省事直接存的 CartoonInfo json，会有冗余信息直接忽略
-    // id 为 title
-    val cartoonInfo: CartoonInfo,
 
     val episodes: List<CartoonLocalEpisode>,
 ){
@@ -49,7 +49,7 @@ data class CartoonLocalItem (
             val nfoFile = uniFile.findFile(TV_SHOW_NFO_FILE_NAME)
             val extFile = uniFile.findFile(EXT_JSON_FILE_NAME)
 
-            if (nfoFile == null || extFile == null){
+            if (nfoFile == null){
                 return null
             }
 
@@ -60,49 +60,18 @@ data class CartoonLocalItem (
             val cover = tvShow.getElementsByTag("art").first()?.getElementsByTag("poster")?.text() ?: ""
             val genre = tvShow.getElementsByTag("tag").map { it.text() }
 
-            val cacheCartoonInfo = extFile.openInputStream().reader().readText().jsonTo<CartoonInfo>()
-            val cartoonInfo = if (cacheCartoonInfo != null){
-                cacheCartoonInfo.copy(
-                    id = title,
-                    name = title,
-                    description = desc,
-                    coverUrl = cover,
-                    genre = genre.joinToString(", "),
-                    url = uniFile.uri.toString(),
-                    source = LocalSource.LOCAL_SOURCE_KEY,
-                    sourceName = LocalSource.label,
-                    intro = "",
-                )
-            } else {
-                CartoonInfo(
-                    id = title,
-                    name = title,
-                    description = desc,
-                    coverUrl = cover,
-                    genre = genre.joinToString(", "),
-                    url = uniFile.uri.toString(),
-                    source = LocalSource.LOCAL_SOURCE_KEY,
-                    sourceName = LocalSource.label,
-                    intro = "",
-                    status = Cartoon.STATUS_UNKNOWN,
-                )
-            }
-
             val episodes = uniFile.listFiles()?.mapNotNull { CartoonLocalEpisode.fromFile(uniFile, it) } ?: emptyList()
             return CartoonLocalItem(
                 folderUri = uniFile.uri.toString(),
                 nfoUri = nfoFile.uri.toString(),
-                extUri = extFile.uri.toString(),
+                extUri = extFile?.uri?.toString(),
                 title = title,
                 desc = desc,
                 cover = cover,
                 genre = genre,
-                cartoonInfo = cartoonInfo,
-                episodes = episodes
-            ).apply {
-                // 这里懒得做包装，直接透传给 LocalSource 使用
-                cartoonInfo.cartoonLocalItem = this
-            }
+                episodes = episodes,
+                uuid = uniFile.name ?: return null
+            )
 
 
         }

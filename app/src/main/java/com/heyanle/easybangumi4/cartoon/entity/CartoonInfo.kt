@@ -123,11 +123,22 @@ data class CartoonInfo(
     @Ignore
     var cartoonLocalItem: CartoonLocalItem? = null
 
+    @Ignore
+    var tagIsName: Boolean = false
+
     val genres: List<String> by lazy {
         if (genre.isEmpty()) {
             emptyList<String>()
         } else {
             genre.split(",").map { it.trim() }.filterNot { it.isBlank() }.distinct()
+        }
+    }
+
+    val tagList: List<String> by lazy {
+        if (tags.isEmpty()) {
+            emptyList<String>()
+        } else {
+            tags.split(",").map { it.trim() }.filterNot { it.isBlank() }.distinct()
         }
     }
 

@@ -431,6 +431,7 @@ fun CartoonPlay(
                         playingVM.playCurrentExternal()
                     },
                     onDownload = { playLine, episodes ->
+
                         stringRes(R.string.add_download_completely).moeSnackBar(
                             confirmLabel = stringRes(R.string.click_to_view),
                             onConfirm = {

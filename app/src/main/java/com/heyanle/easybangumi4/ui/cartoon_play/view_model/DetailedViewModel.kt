@@ -137,7 +137,7 @@ class DetailedViewModel(
                 if (tl.find { !it.isInner() } != null) {
                     _stateFlow.update {
                         it.copy(
-                            starDialogState = StarDialogState(cartoon, tl.sortedBy { it.order })
+                            starDialogState = StarDialogState(cartoon, tl.filter { !it.isInner() }.sortedBy { it.order })
                         )
                     }
                 } else {
